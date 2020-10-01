@@ -1,18 +1,9 @@
+import {LOGIN_USER} from '../actions/Types'
+
 const fun = (state = {}, action) => {
     switch (action.type) {
-    //  case 'ADD_TODO':
-    //     return [
-    //       ...state,
-    //       {
-    //         id: action.id,
-    //         text: action.text,
-    //         completed: false
-    //       }
-    //     ]
-    //   case 'TOGGLE_TODO':
-    //     return state.map(todo =>
-    //       todo.id === action.id ? { ...todo, completed: !todo.completed } : todo
-    //     )
+      case LOGIN_USER:
+        return {...state, loginSuccess: action.payload}
       default:
         return state
     }

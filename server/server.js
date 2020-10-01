@@ -166,6 +166,7 @@ app.post('/api/users/login',(req,res)=>{
                 return res.json({loginSuccess:false,message:'Wrong password'})
             };
 
+            
             user.generateToken((err,user)=>{
                 if(err) {
                     return res.status(400).send(err)
