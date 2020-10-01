@@ -10,9 +10,9 @@ function Routes() {
   return (
     <Layout>
       <Switch>
-        {/* <Route path="/register">
-          <Register/>
-        </Route> */}
+        <Route path="/register">
+          <Register history={history}/>
+        </Route>
         <Route path="/register_login">
           <RegisterLogin history={history}/>
         </Route>
