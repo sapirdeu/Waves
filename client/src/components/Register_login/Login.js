@@ -6,7 +6,7 @@ import {withRouter} from 'react-router-dom'
 import {useDispatch,connect} from 'react-redux'
 import {loginUser} from '../../redux/actions/user_actions'
 
-function Login({history}) {
+function Login(props) {
     const [formError, setFormError] = useState(false);
     const [formData, setFormData] = useState({
         email:{
@@ -60,8 +60,8 @@ function Login({history}) {
             dispatch(loginUser(dataToSubmit))
             .then(response=>{
                 if(response.payload.loginSuccess){
-                    console.log(response.payload);
-                    history.push('/user/dashboard');
+                    //console.log(response.payload);
+                    props.history.push('/user/dashboard');
                 } else{
                     setFormError(true);
                 }

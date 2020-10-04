@@ -2,7 +2,7 @@ import React from 'react'
 import MyButton from '../utils/MyButton'
 import Login from './Login'
 
-function RegisterLogin({history}) {
+function RegisterLogin(props) {
     return (
         <div className="page_wrapper">
             <div className="container">
@@ -23,7 +23,7 @@ function RegisterLogin({history}) {
                     <div className="right">
                         <h2>Registered Customers</h2>
                         <p>If you have an account please log in.</p>
-                        <Login history={history}/>
+                        <Login {...props}/>
                     </div>
                 </div>
             </div>

@@ -7,7 +7,7 @@ import {withRouter} from 'react-router-dom'
 import {useDispatch,connect} from 'react-redux'
 import {registerUser} from '../../redux/actions/user_actions'
 
-function Register({history}) {
+function Register(props) {
     const [formError, setFormError] = useState(false);
     const [formSuccess, setFormSucces] = useState(false);
     const [formData, setFormData] = useState({
@@ -108,13 +108,12 @@ function Register({history}) {
         if(formIsValid) {            
             dispatch(registerUser(dataToSubmit))
             .then(response=>{
-                debugger;
                 if(response.payload.success){
                     setFormError(false);
                     setFormSucces(true);
 
                     setTimeout(()=>{
-                        history.push('/register_login');
+                        props.history.push('/register_login');
                     }, 3000);  
 
                 } else{
