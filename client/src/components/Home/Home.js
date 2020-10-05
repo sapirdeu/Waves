@@ -1,9 +1,12 @@
 import React from 'react'
+import HomePromotion from './HomePromotion'
+import HomeSlider from './HomeSlider'
 
 function Home() {
     return (
         <div>
-            home
+            <HomeSlider/>
+            <HomePromotion/>
         </div>
     )
 }
