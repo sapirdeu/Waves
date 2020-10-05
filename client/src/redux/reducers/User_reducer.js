@@ -1,4 +1,9 @@
-import {LOGIN_USER, REGISTER_USER, AUTH_USER} from '../actions/Types'
+import {
+    LOGIN_USER, 
+    REGISTER_USER, 
+    AUTH_USER,
+    LOGOUT_USER
+} from '../actions/Types'
 
 const fun = (state = {}, action) => {
     switch (action.type) {
@@ -8,6 +13,8 @@ const fun = (state = {}, action) => {
         return {...state, loginSuccess: action.payload}
       case AUTH_USER:
         return {...state, userData: action.payload}
+      case LOGOUT_USER:
+        return {...state}
       default:
         return state
     }

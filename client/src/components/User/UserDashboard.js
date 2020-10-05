@@ -2,16 +2,16 @@ import React from 'react'
 import UserLayout from './UserLayout'
 import MyButton from '../utils/MyButton'
 
-function UserDashboard() {
+function UserDashboard({user}) {
     return (
         <UserLayout>
             <div>
                 <div className="user_nfo_panel">
                     <h1>User Inforamtion</h1>
                     <div>
-                        <span>Name</span>
-                        <span>lastname</span>
-                        <span>Email</span>
+                        <span>{user.userData.name}</span>
+                        <span>{user.userData.lastname}</span>
+                        <span>{user.userData.email}</span>
                     </div>
                     <MyButton
                         type = "default"

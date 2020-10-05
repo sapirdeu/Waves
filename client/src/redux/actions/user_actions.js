@@ -1,5 +1,10 @@
 import axios from 'axios'
-import {LOGIN_USER, REGISTER_USER, AUTH_USER} from './Types'
+import {
+        LOGIN_USER, 
+        REGISTER_USER, 
+        AUTH_USER, 
+        LOGOUT_USER
+} from './Types'
 import {USER_SERVER} from '../../components/utils/Misc'
 
 function registerUser(dataToSubmit){
@@ -35,5 +40,16 @@ function auth(){
     }
 }
 
-export {loginUser, registerUser, auth}
+function logoutUser(){
+    const request = 
+        axios.get(`${USER_SERVER}/logout`)
+        .then(response => response.data);
+    
+    return {
+        type: LOGOUT_USER, 
+        payload: request
+    }
+}
+
+export {loginUser, registerUser, auth, logoutUser}
 
