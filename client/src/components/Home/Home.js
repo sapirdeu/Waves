@@ -13,7 +13,7 @@ function Home(props) {
     useEffect(() => {
         dispatch(getProductsBySell())
         dispatch(getProductsByArrival())
-    });
+    }, [dispatch]);
 
 
     return (

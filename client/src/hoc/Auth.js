@@ -30,7 +30,7 @@ export default function(ComposedClass, reload, adminRoute=null){
                 }
                 setLoading(false);
             });
-        });
+        }, [dispatch, props.user.userData, props.history]);
         
 
         if(loading){

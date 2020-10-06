@@ -7,6 +7,7 @@ import Layout from './hoc/Layout';
 import history from './history';
 import UserDashboard from './components/User/UserDashboard';
 import Auth from './hoc/Auth';
+import Shop from './components/Shop/Shop';
 
 
 function Routes() {
@@ -18,6 +19,8 @@ function Routes() {
           {/* <Route path="/user/dashboard">
             <UserDashboard/>
           </Route> */}
+
+
           <Route path="/register" exact component={Auth(Register,false)}/>
           {/* <Route path="/register">
             <Register history={history}/>
@@ -26,6 +29,7 @@ function Routes() {
           {/* <Route path="/register_login">
             <RegisterLogin history={history}/>
           </Route> */}
+          <Route path="/shop" exact component={Auth(Shop,null)}/>
           <Route path="/" exact component={Auth(Home,null)}/>
           {/* <Route path="/">
             <Home />

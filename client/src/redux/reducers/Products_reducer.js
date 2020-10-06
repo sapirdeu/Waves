@@ -1,6 +1,8 @@
 import {
     GET_PRODUCTS_BY_ARRIVAL,
     GET_PRODUCTS_BY_SELL,
+    GET_BRANDS,
+    GET_WOODS
 } from '../actions/Types'
 
 const fun = (state = {}, action) => {
@@ -9,6 +11,10 @@ const fun = (state = {}, action) => {
         return {...state, byArrival: action.payload}
       case GET_PRODUCTS_BY_SELL:
         return {...state, bySell: action.payload}
+      case GET_BRANDS:
+          return {...state, brands: action.payload}
+      case GET_WOODS:
+        return {...state, woods: action.payload}
       default:
         return state
     }
