@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from 'react'
 import {withRouter} from 'react-router-dom'
 import {useDispatch,connect} from 'react-redux'
-import {getBrands, getWoods} from '../../redux/actions/products_actions'
+import { getProductsToShop,getBrands, getWoods} from '../../redux/actions/products_actions'
 import PageTop from '../utils/PageTop';
 import CollapseCheckbox from '../utils/CollapseCheckbox';
 import CollapseRadio from '../utils/CollapseRadio';
@@ -9,9 +9,9 @@ import {frets, price} from '../utils/Form/FixedCategories';
 
 function Shop(props) {
     const products = props.products;
-    const [grid,setGrid] = useState('');
+    // const [grid,setGrid] = useState('');
     const [limit] = useState(6);
-    const [skip] = useState(0);
+    const [skip, setSkip] = useState(0);
     const [filters, setFilters] = useState({
         brand:[],
         frets:[],
@@ -24,7 +24,8 @@ function Shop(props) {
     useEffect(() => {
         dispatch(getBrands())
         dispatch(getWoods())
-    }, [dispatch]);
+        dispatch(getProductsToShop(skip, limit, filters))
+    }, [dispatch, skip, limit, filters]);
 
     const handlePrice = (filters) => {
         const data = price;
@@ -39,23 +40,28 @@ function Shop(props) {
         return array;
     }
 
-    const handleFilters = (filters, category) => {
-        const newFilters = {...filters};
-        newFilters[category] = filters;
+    const showFilteredResults = (newFilters) => {
+        dispatch(getProductsToShop(0, limit, newFilters))
+        .then(()=>{
+            setSkip(0);
+        })
+    }
 
-        if(category==='price'){
-            let priceValue = handlePrice(filters);
+    const handleFilters = (filters1, category) => {
+        const newFilters = filters;
+        newFilters[category] = filters1;
+        
+        if (category==='price'){
+            let priceValue = handlePrice(filters1);
             newFilters[category] = priceValue;
         }
 
+        showFilteredResults(newFilters);
         setFilters(newFilters);
     }
 
     return (
         <div>
-
-            {/* {console.log(filters)} */}
-
             <PageTop title="Browse Products"/>
             <div className="container">
                 <div className="shop_wrapper">

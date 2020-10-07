@@ -60,7 +60,6 @@ function Login(props) {
             dispatch(loginUser(dataToSubmit))
             .then(response=>{
                 if(response.payload.loginSuccess){
-                    //console.log(response.payload);
                     props.history.push('/user/dashboard');
                 } else{
                     setFormError(true);
