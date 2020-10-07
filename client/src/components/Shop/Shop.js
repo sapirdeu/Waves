@@ -6,10 +6,15 @@ import PageTop from '../utils/PageTop';
 import CollapseCheckbox from '../utils/CollapseCheckbox';
 import CollapseRadio from '../utils/CollapseRadio';
 import {frets, price} from '../utils/Form/FixedCategories';
+import LoadMoreCards from './LoadMoreCards';
+
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import faBars from '@fortawesome/fontawesome-free-solid/faBars'
+import faTh from '@fortawesome/fontawesome-free-solid/faTh'
 
 function Shop(props) {
     const products = props.products;
-    // const [grid,setGrid] = useState('');
+    const [grid,setGrid] = useState('');
     const [limit] = useState(6);
     const [skip, setSkip] = useState(0);
     const [filters, setFilters] = useState({
@@ -25,7 +30,7 @@ function Shop(props) {
         dispatch(getBrands())
         dispatch(getWoods())
         dispatch(getProductsToShop(skip, limit, filters))
-    }, [dispatch, skip, limit, filters]);
+    }, [dispatch]);
 
     const handlePrice = (filters) => {
         const data = price;
@@ -50,7 +55,7 @@ function Shop(props) {
     const handleFilters = (filters1, category) => {
         const newFilters = filters;
         newFilters[category] = filters1;
-        
+
         if (category==='price'){
             let priceValue = handlePrice(filters1);
             newFilters[category] = priceValue;
@@ -58,6 +63,18 @@ function Shop(props) {
 
         showFilteredResults(newFilters);
         setFilters(newFilters);
+    }
+
+    const loadMoreCards = () => {
+        let newSkip = skip + limit;
+        dispatch(getProductsToShop(newSkip, limit, filters, products.toShop))
+        .then(()=>{
+            setSkip(newSkip);
+        })
+    }
+
+    const handleGrid = () => {
+        setGrid(!grid ? 'grid_bars' : '')
     }
 
     return (
@@ -93,7 +110,31 @@ function Shop(props) {
                     </div>
 
                     <div className="right">
-                        right
+                        <div className="shop_options">
+                            <div className="shop_grids clear">
+                                <div
+                                    className={`grid_btn ${grid ? '' : 'active'}`}
+                                    onClick={()=>handleGrid()}
+                                >
+                                    <FontAwesomeIcon icon={faTh}/>
+                                </div>
+                                <div
+                                    className={`grid_btn ${!grid ? '' : 'active'}`}
+                                    onClick={()=>handleGrid()}
+                                >
+                                    <FontAwesomeIcon icon={faBars}/>
+                                </div>
+                            </div>
+                        </div>
+                        <div>
+                            <LoadMoreCards
+                                grid={grid}
+                                limit={limit}
+                                size={products.toShopSize}
+                                products={products.toShop}
+                                loadMore={()=>loadMoreCards()}
+                            />
+                        </div>
                     </div>
                 </div>
             </div>
