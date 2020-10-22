@@ -8,6 +8,7 @@ import history from './history';
 import UserDashboard from './components/User/UserDashboard';
 import Auth from './hoc/Auth';
 import Shop from './components/Shop/Shop';
+import AddProduct from './components/User/Admin/AddProduct';
 
 
 function Routes() {
@@ -16,24 +17,13 @@ function Routes() {
       <Router history={history}>
         <Layout>
           <Route path="/user/dashboard" exact component={Auth(UserDashboard,true)}/>
-          {/* <Route path="/user/dashboard">
-            <UserDashboard/>
-          </Route> */}
+          <Route path="/admin/add_product" exact component={Auth(AddProduct,true)}/>
 
 
           <Route path="/register" exact component={Auth(Register,false)}/>
-          {/* <Route path="/register">
-            <Register history={history}/>
-          </Route> */}
           <Route path="/register_login" exact component={Auth(RegisterLogin,false)}/>
-          {/* <Route path="/register_login">
-            <RegisterLogin history={history}/>
-          </Route> */}
           <Route path="/shop" exact component={Auth(Shop,null)}/>
           <Route path="/" exact component={Auth(Home,null)}/>
-          {/* <Route path="/">
-            <Home />
-          </Route> */}
         </Layout>
       </Router>  
   );

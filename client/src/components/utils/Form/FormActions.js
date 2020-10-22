@@ -63,4 +63,29 @@ function isFormValid(formData, formName){
     return formIsValid;
 }
 
-export {update, validate, generateData, isFormValid}
+function populateOptionFields(formData, arrayData = [], field){
+    const newArr = []
+    const newFormData = {...formData}
+
+    arrayData.forEach(item => {
+        newArr.push({key: item._id, value: item.name});
+    })
+
+    newFormData[field].config.options = newArr;
+    return newFormData;
+}
+
+function resetFields(formData, formName){
+    const newFormData = {...formData};
+
+    for(let key in newFormData){
+        newFormData[key].value = '';
+        newFormData[key].valid = false;
+        newFormData[key].touched = false;
+        newFormData[key].validationMessage = '';
+    }
+
+    return newFormData;
+}
+
+export {update, validate, generateData, isFormValid, populateOptionFields, resetFields}

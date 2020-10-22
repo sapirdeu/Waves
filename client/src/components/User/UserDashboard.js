@@ -1,5 +1,5 @@
 import React from 'react'
-import UserLayout from './UserLayout'
+import UserLayout from '../../hoc/UserLayout'
 import MyButton from '../utils/MyButton'
 
 function UserDashboard({user}) {

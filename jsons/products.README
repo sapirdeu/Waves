@@ -179,7 +179,7 @@
     "available" : true,
     "wood" : ObjectId("5b2c1c81255983b4795f8fda"),
     "frets" : 22,
-    "publish" : true,
+    "publish" : false,
     "createdAt" : ISODate("2018-06-22T19:18:08.458Z"),
     "updatedAt" : ISODate("2018-06-26T23:32:52.949Z"),
     "__v" : 0
