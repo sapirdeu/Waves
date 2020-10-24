@@ -6,6 +6,7 @@ import {getBrands, getWoods, addProduct, clearProduct} from '../../../redux/acti
 
 import {withRouter} from 'react-router-dom'
 import {useDispatch,connect} from 'react-redux'
+import FileUpload from '../../utils/Form/FileUpload'
 
 function AddProduct(props) {
     const [formError, setFormError] = useState(false);
@@ -158,16 +159,16 @@ function AddProduct(props) {
             validationMessage: '',
             showlabel: true
         },
-        // images:{
-        //     value: '',
-        //     validation:{
-        //         required: true,
-        //     },
-        //     valid: true,
-        //     touched: false,
-        //     validationMessage: '',
-        //     showlabel: true
-        // }
+        images:{
+            value: '',
+            validation:{
+                required: false,
+            },
+            valid: true,
+            touched: false,
+            validationMessage: '',
+            showlabel: false
+        }
     });
 
     const dispatch = useDispatch();
@@ -231,12 +232,24 @@ function AddProduct(props) {
         dispatch(clearProduct())
     }
 
+    const imagesHandler = (images) => {
+        const newFormData = {...formData};
+        newFormData['images'].value = images;
+        newFormData['images'].valid = true;
+        setFormData(newFormData);
+    }
+
 
     return (
         <UserLayout>
             <div>
                 <h1>Add product</h1>
                 <form onSubmit={(event)=>submitForm(event)}>
+                    <FileUpload
+                        imagesHandler={(images)=> imagesHandler(images)}
+                        reset={formSuccess}
+                    />
+
                     <FormFields
                         id={'name'}
                         formData={formData.name}

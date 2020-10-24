@@ -15,7 +15,7 @@ function Card(props) {
             <div
                 className="image"
                 style={{
-                    background: `url(${renderCardImage(props.image)}) no-repeat`
+                    background: `url(${renderCardImage(props.images)}) no-repeat`
                 }}
             > 
             </div>
