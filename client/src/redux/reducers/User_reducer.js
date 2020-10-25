@@ -2,7 +2,8 @@ import {
     LOGIN_USER, 
     REGISTER_USER, 
     AUTH_USER,
-    LOGOUT_USER
+    LOGOUT_USER,
+    ADD_TO_CART_USER
 } from '../actions/Types'
 
 const fun = (state = {}, action) => {
@@ -13,6 +14,11 @@ const fun = (state = {}, action) => {
         return {...state, loginSuccess: action.payload}
       case AUTH_USER:
         return {...state, userData: action.payload}
+      case ADD_TO_CART_USER:
+        return {...state, userData: {
+          ...state.userData,
+          cart: action.payload
+        }}
       case LOGOUT_USER:
         return {...state}
       default:

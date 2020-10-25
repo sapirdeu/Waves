@@ -1,7 +1,13 @@
 import React from 'react'
-import MyButton from './MyButton';
+import MyButton from './MyButton'
+import {withRouter} from 'react-router-dom'
+import {useDispatch,connect} from 'react-redux'
+import {addToCart} from '../../redux/actions/user_actions'
+
 
 function Card(props) {
+    const dispatch = useDispatch();
+
     const renderCardImage = (images) => {
         if(images.length > 0){
             return images[0].url;
@@ -39,27 +45,31 @@ function Card(props) {
                 <div className="actions">
                     <div className="button_wrapp">
                         <MyButton
-                        type="default"
-                        altClass="card_link"
-                        title="View product"
-                        linkTo={`/product_detail/${props._id}`}
-                        addStyles={{
-                            margin: '10px 0 0 0'
-                        }}
+                            type="default"
+                            altClass="card_link"
+                            title="View product"
+                            linkTo={`/product_detail/${props._id}`}
+                            addStyles={{
+                                margin: '10px 0 0 0'
+                            }}
                         />
                     </div>
                     <div className="button_wrapp">
                         <MyButton
-                        type="bag_link"
-                        runAction={()=>{
-                            console.log('added to cart')
-                        }}
-                        altClass="card_link"
-                        title="View product"
-                        linkTo={`/product_detail/${props._id}`}
-                        addStyles={{
-                            margin: '10px 0 0 0'
-                        }}
+                            type="bag_link"
+                            runAction={()=>{
+                                props.user.userData.isAuth ? 
+                                    dispatch(addToCart(props._id))
+                                    // console.log(props)
+                                : 
+                                    console.log('You need to log in')
+                            }}
+                            altClass="card_link"
+                            title="View product"
+                            linkTo={`/product_detail/${props._id}`}
+                            addStyles={{
+                                margin: '10px 0 0 0'
+                            }}
                         />
                     </div>
                 </div>
@@ -68,4 +78,10 @@ function Card(props) {
     )
 }
 
-export default Card
+function mapStateToProps(state){
+    return{
+        user: state.user
+    }
+}
+
+export default connect(mapStateToProps)(withRouter(Card));

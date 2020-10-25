@@ -24,7 +24,7 @@ function FormFields({id, formData, change}) {
                 formTemplate = (
                     <div className="formBlock">
                         {
-                            formData ?
+                            formData.showlabel ?
                                 <div className="label_inputs">
                                     {formData.config.label}
                                 </div>
