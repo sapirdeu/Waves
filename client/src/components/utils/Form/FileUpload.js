@@ -26,8 +26,6 @@ function FileUpload(props) {
 
         axios.post('/api/users/uploadimage', formData, config)
         .then(response => {
-            console.log(response.data)
-
             setUploading(false);
             setUploadedFiles([...uploadedFiles, response.data]);
         });
