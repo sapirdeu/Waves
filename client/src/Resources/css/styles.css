@@ -615,12 +615,14 @@ footer .business_nfo .nfo {
 
 
 .product_detail_wrapper p {
+    padding-top: 10px;
     font-size: 17px;
     font-family: Arial, Helvetica;
     font-weight: lighter;
 }
 
 .product_detail_wrapper .product_tags {
+    padding-top: 10px;
     padding-bottom: 10px;
     border-bottom: 1px solid #d3d3d3;
 }

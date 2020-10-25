@@ -10,6 +10,7 @@ import Auth from './hoc/Auth';
 import Shop from './components/Shop/Shop';
 import AddProduct from './components/User/Admin/AddProduct';
 import ManageCategories from './components/User/Admin/ManageCategories';
+import ProductPage from './components/Product/ProductPage';
 
 
 function Routes() {
@@ -21,7 +22,7 @@ function Routes() {
           <Route path="/admin/add_product" exact component={Auth(AddProduct,true)}/>
           <Route path="/admin/manage_categories" exact component={Auth(ManageCategories,true)}/>
 
-          
+          <Route path="/product_detail/:id" exact component={Auth(ProductPage,null)}/>
           <Route path="/register" exact component={Auth(Register,false)}/>
           <Route path="/register_login" exact component={Auth(RegisterLogin,false)}/>
           <Route path="/shop" exact component={Auth(Shop,null)}/>
