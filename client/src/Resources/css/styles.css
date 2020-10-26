@@ -770,6 +770,10 @@ footer .business_nfo .nfo {
     border-right: 1px solid #f8f8f8; 
 }
 
+.user_left_nav h2{
+    padding-top: 10px;
+}
+
 .user_container .user_left_nav .links a {
     display: block;
     border-bottom: 1px solid #dddddd;

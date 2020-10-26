@@ -183,7 +183,7 @@ function AddProduct(props) {
             const newFormData = populateOptionFields(formData, response.payload, 'wood');
             updateFields(newFormData);
         })
-    }, []);
+    }, [dispatch]);
 
     const updateFields = (newFormData) => {
         setFormData(newFormData)

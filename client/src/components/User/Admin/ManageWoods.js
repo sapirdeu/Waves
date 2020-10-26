@@ -33,7 +33,7 @@ function ManageWoods(props) {
 
     useEffect(() => {
         dispatch(getWoods());
-    }, []);
+    }, [dispatch]);
 
     const showCategoryItems = () =>(
         props.products.woods ? 

@@ -33,7 +33,7 @@ function ManageBrands(props) {
 
     useEffect(() => {
         dispatch(getBrands());
-    }, []);
+    }, [dispatch]);
 
     const showCategoryItems = () =>(
         props.products.brands ? 

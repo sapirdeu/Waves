@@ -60,7 +60,6 @@ function Card(props) {
                             runAction={()=>{
                                 props.user.userData.isAuth ? 
                                     dispatch(addToCart(props._id))
-                                    // console.log(props)
                                 : 
                                     console.log('You need to log in')
                             }}

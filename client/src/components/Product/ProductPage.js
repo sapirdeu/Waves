@@ -3,6 +3,7 @@ import PageTop from '../utils/PageTop'
 import {withRouter} from 'react-router-dom'
 import {useDispatch,connect} from 'react-redux'
 import {getProductDetail, clearProductDetail} from '../../redux/actions/products_actions'
+import {addToCart} from '../../redux/actions/user_actions'
 import CircularProgress from '@material-ui/core/CircularProgress'
 import ProdInfo from './ProdInfo'
 import ProdImg from './ProdImg'
@@ -17,10 +18,10 @@ function ProductPage(props) {
         return () => {
             dispatch(clearProductDetail());
           }
-    }, []);
+    }, [dispatch]);
 
     const AddToCartHandler = (id) => {
-
+        dispatch(addToCart(id));
     }
 
     return (
