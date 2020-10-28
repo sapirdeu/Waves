@@ -9,6 +9,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import faFrown from '@fortawesome/fontawesome-free-solid/faFrown'
 import faSmile from '@fortawesome/fontawesome-free-solid/faSmile'
 import UserProductBlock from '../utils/User/UserProductBlock'
+import Paypal from '../utils/Paypal'
 
 
 function UserCart(props) {
@@ -63,6 +64,19 @@ function UserCart(props) {
             <div>You have no items</div>
         </div>
     )
+    
+    const transactionError = (data) => {
+        console.log("Paypal error!");
+    }
+    
+    const transactionCanceled = (data) => {
+        console.log("Transaction canceled!");
+    }
+
+    const transactionSuccess = (data) => {
+        setShowTotal(false);
+        setShowSuccess(true);
+    }
 
     return (
         <UserLayout>
@@ -97,7 +111,12 @@ function UserCart(props) {
                 {
                     showTotal ?
                         <div className="paypal_button_container">
-                            Paypal
+                            <Paypal
+                                toPay={total}
+                                onError={(data)=>transactionError(data)}
+                                onCancel={(data)=>transactionCanceled(data)}
+                                onSuccess={(data)=>transactionSuccess(data)}
+                            />
                         </div>
                     : null
                 }
