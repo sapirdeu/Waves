@@ -11,6 +11,7 @@ import Shop from './components/Shop/Shop';
 import AddProduct from './components/User/Admin/AddProduct';
 import ManageCategories from './components/User/Admin/ManageCategories';
 import ProductPage from './components/Product/ProductPage';
+import UserCart from './components/User/UserCart';
 
 
 function Routes() {
@@ -19,6 +20,7 @@ function Routes() {
       <Router history={history}>
         <Layout>
           <Route path="/user/dashboard" exact component={Auth(UserDashboard,true)}/>
+          <Route path="/user/cart" exact component={Auth(UserCart,true)}/>
           <Route path="/admin/add_product" exact component={Auth(AddProduct,true)}/>
           <Route path="/admin/manage_categories" exact component={Auth(ManageCategories,true)}/>
 
