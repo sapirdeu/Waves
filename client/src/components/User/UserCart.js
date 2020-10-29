@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import UserLayout from '../../hoc/UserLayout'
-import {getCartItems, removeCartItem} from '../../redux/actions/user_actions'
+import {getCartItems, removeCartItem, onSuccessBuy} from '../../redux/actions/user_actions'
 
 import {withRouter} from 'react-router-dom'
 import {useDispatch,connect} from 'react-redux'
@@ -13,7 +13,7 @@ import Paypal from '../utils/Paypal'
 
 
 function UserCart(props) {
-    const [isLoading, setIsLoadind] = useState(true);
+    //const [isLoading, setIsLoadind] = useState(true);
     const [total, setTotal] = useState(0);
     const [showTotal, setShowTotal] = useState(false);
     const [showSuccess, setShowSuccess] = useState(false);
@@ -38,9 +38,9 @@ function UserCart(props) {
         }
     }, [dispatch]);
 
-    const calculateTotalPrice = (cartDeatil) => {
+    const calculateTotalPrice = (cartDetail) => {
         let currTotal = 0;
-        cartDeatil.forEach(item=>{
+        cartDetail.forEach(item=>{
             currTotal += parseInt(item.price, 10) * item.quantity;
         })
         setTotal(currTotal);
@@ -74,8 +74,13 @@ function UserCart(props) {
     }
 
     const transactionSuccess = (data) => {
-        setShowTotal(false);
-        setShowSuccess(true);
+        dispatch(onSuccessBuy({cartDetail:props.user.cartDetail, paymentData: data}))
+        .then((response)=>{
+            if(response.payload.success){
+                setShowTotal(false);
+                setShowSuccess(true);
+            }
+        })
     }
 
     return (
