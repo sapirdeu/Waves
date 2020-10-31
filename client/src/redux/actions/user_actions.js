@@ -7,7 +7,9 @@ import {
         ADD_TO_CART_USER,
         GET_CART_ITEMS_USER,
         REMOVE_CART_ITEMS_USER,
-        ON_SUCCESS_BUY_USER
+        ON_SUCCESS_BUY_USER,
+        UPDATE_DATA_USER,
+        CLEAR_UPDATE_USER_DATA
 } from './Types'
 import {USER_SERVER, PRODUCT_SERVER} from '../../components/utils/Misc'
 
@@ -117,6 +119,24 @@ function onSuccessBuy(data){
     }
 }
 
+function updateUserData(dataToSubmit){
+    const request = 
+    axios.post(`${USER_SERVER}/update_profile`, dataToSubmit)
+    .then(response => response.data);
+
+    return {
+        type: UPDATE_DATA_USER, 
+        payload: request
+    }
+}
+
+function clearUpdateUser(){
+    return {
+        type: CLEAR_UPDATE_USER_DATA, 
+        payload: ''
+    }
+}
+
 export {
     loginUser, 
     registerUser, 
@@ -125,6 +145,8 @@ export {
     addToCart, 
     getCartItems,
     removeCartItem,
-    onSuccessBuy
+    onSuccessBuy,
+    updateUserData,
+    clearUpdateUser
 }
 
