@@ -335,7 +335,7 @@ app.post('/api/users/successBuy', auth, (req, res)=>{
         history.push({
             dateOfPurcahse: Date.now(),
             name: item.name,
-            brand: item.brand,
+            brand: item.brand.name,
             id: item._id,
             price: item.price,
             quantity: item.quantity,
