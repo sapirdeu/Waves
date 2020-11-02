@@ -11,11 +11,7 @@ function Layout(props) {
 
     useEffect(() => {
         if(Object.keys(props.site).length === 0){
-            dispatch(getSiteData())
-            // .then((response)=>{
-            //     const newFormData = populateFields(formData, response.payload[0]);
-            //     setFormData(newFormData);
-            // })
+            dispatch(getSiteData());
         }
     }, [dispatch]);
 
