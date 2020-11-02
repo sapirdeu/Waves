@@ -13,6 +13,7 @@ import ManageCategories from './components/User/Admin/ManageCategories';
 import ProductPage from './components/Product/ProductPage';
 import UserCart from './components/User/UserCart';
 import UpdateUserProfile from './components/User/UpdateUserProfile';
+import ManageSite from './components/User/Admin/ManageSite';
 
 
 function Routes() {
@@ -25,6 +26,7 @@ function Routes() {
           <Route path="/user/user_profile" exact component={Auth(UpdateUserProfile,true)}/>
           <Route path="/admin/add_product" exact component={Auth(AddProduct,true)}/>
           <Route path="/admin/manage_categories" exact component={Auth(ManageCategories,true)}/>
+          <Route path="/admin/site_info" exact component={Auth(ManageSite,true)}/>
 
           <Route path="/product_detail/:id" exact component={Auth(ProductPage,null)}/>
           <Route path="/register" exact component={Auth(Register,false)}/>

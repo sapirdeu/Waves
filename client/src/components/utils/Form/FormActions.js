@@ -94,14 +94,16 @@ function resetFields(formData, formName){
 }
 
 function populateFields(formData, fields){
-    for(let key in formData){
-        formData[key].value = fields[key];
-        formData[key].valid = true;
-        formData[key].touched = true;
-        formData[key].validationMessage = '';
+    const newFormData = {...formData};
+
+    for(let key in newFormData){
+        newFormData[key].value = fields[key];
+        newFormData[key].valid = true;
+        newFormData[key].touched = true;
+        newFormData[key].validationMessage = '';
     }
 
-    return formData;
+    return newFormData;
 }
 
 export {update, validate, generateData, isFormValid, populateOptionFields, resetFields, populateFields}
