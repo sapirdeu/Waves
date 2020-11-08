@@ -13,21 +13,10 @@ The website implememnts authentication, and payemnt (using Paypal).
 
 4. Clone this repository to your local machine 
 
-5. `cd .\eCommerce_Purchasing_Guitars\` and then:  
-  5.1 Delete the folder: `.\eCommerce_Purchasing_Guitars\node_modules`  
-  5.2 Delete the file: `package-lock.json`  
-  5.3 run: 
-    ```
-    npm install react-scripts --save
-    npm install react
-    npm i http-proxy-middleware
-    npm install bcrypt body-parser cloudinary concurrently cookie-parser dotenv express express-formidable jsonwebtoken moment mongoose multer --save
-    ```
+5. `cd .\eCommerce_Purchasing_Guitars\` and run:  
+    `npm install async bcrypt body-parser cloudinary concurrently cookie-parser dotenv express express-formidable http-proxy-middleware jsonwebtoken moment mongoose multer react-image-lightbox react-scripts react --save`
     
-6. `cd .\eCommerce_Purchasing_Guitars\client\` and then:  
-  6.1 Delete the folder: `.\eCommerce_Purchasing_Guitars\client\node_modules`  
-  6.2 Delete the file: `package-lock.json`  
-  6.3 run:  
+6. `cd .\eCommerce_Purchasing_Guitars\client\` and run:  
     `npm install @fortawesome/fontawesome @fortawesome/fontawesome-free-solid @fortawesome/react-fontawesome @material-ui/core @fortawesome/fontawesome-svg-core axios react-images react-redux react-router-dom react-slick redux redux-promise redux-thunk react-dropzone react-moment react-paypal-express-checkout react-dom  --save`  
 
 ## Usage:
