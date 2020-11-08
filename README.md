@@ -4,6 +4,9 @@ An eCommerce website for purchasing guitars.
 The client side is in React.js, server side is in Node.js (using Express.js) with MongoDB as the database (using Mongoose).   
 The website implememnts authentication, and payemnt (using Paypal).  
 
+Demo 👇  
+[![Watch the video](https://github.com/sapirdeu/eCommerce_Purchasing_Guitars/blob/master/GIF.gif)](https://github.com/sapirdeu/eCommerce_Purchasing_Guitars/blob/master/MP4.mp4)
+
 ## Installation:
 1. Download Node.js (https://nodejs.org/en/download/)
 
