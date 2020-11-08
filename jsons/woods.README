@@ -15,3 +15,9 @@
     "name" : "Alder",
     "__v" : 0
 }
+
+{
+    "_id" : ObjectId("5f958252980bfe31a08e8998"),
+    "name" : "Ebony",
+    "__v" : 0
+}
