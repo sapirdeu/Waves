@@ -20,13 +20,13 @@ function Home(props) {
         <div>
             <HomeSlider/>
             <CardBlock 
-                list={props.products.bySell}
-                title="Best Selling Guitars"
+                list={props.products.byArrival}
+                title="New Arrivals"
             />
             <HomePromotion/>
             <CardBlock 
-                list={props.products.byArrival}
-                title="New Arrivals"
+                list={props.products.bySell}
+                title="Best Selling Guitars"
             />
         </div>
     )
