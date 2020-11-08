@@ -30,7 +30,9 @@ Demo 👇
   - Open another cmd and run `mongo.exe`
   
 - Robo 3T:  
-Open Robo 3T and connect: Name: `LocalMDB`, Address: `localhost:27017`
+    - Open Robo 3T and connect: Name: `LocalMDB`, Address: `localhost:27017`
+    - Create a new collection called `waves` and 3 tables with the names `products`, `woods`, `brands`.
+    - Fill in the 3 tables with the suitable content found in the files in `.\eCommerce_Purchasing_Guitars\jsons`.
 
 - Create a user in Cloudinary (https://cloudinary.com/) to upload guitars pictures
 
